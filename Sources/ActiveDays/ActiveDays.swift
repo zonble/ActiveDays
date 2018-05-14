@@ -1,8 +1,13 @@
 import Foundation
 
+/// Errors that may happen while using ActiveDaysPerWeekCounter.
 public enum ActiveDaysCounterError: Error, LocalizedError {
+	/// You did not start a session before commiting a new access ddate.
 	case sessionUnstarted
+	/// The date is before the begin of the week of the session.
 	case invalidDate
+	/// The date is much after the end of the week of the session, and
+	/// you should create a new session.
 	case needsNewSession
 
 	public var errorDescription: String? {
@@ -67,18 +72,27 @@ public class ActiveDaysPerWeekCounter {
 		self.lastResultMadeDate = nil
 	}
 
+	/// Start a new session, if there is no existing session. You need
+	/// to start a session before commiting new access date to the
+	/// counter.
+	///
+	/// - Returns: true if a new session is started, otherwise
+	///            the counter is using an existing session.
 	public func startNewSessionIfNoExitingOne() -> Bool {
 		if let _ = self.sessionBeginDate {
 			return false
 		}
-		let date = Date()
-		self.startSession(date: date)
+		self.startSession(date: Date())
 		return true
 	}
 
 	/// Start a new session by a given date, and the base of the
 	/// session of be the start of the week where the given date is
 	/// in.
+	///
+	/// You need to start a session before commiting new access date
+	/// to the counter. If there is an existing session, it will be
+	/// replaced with the new one.
 	///
 	/// - Parameter date: the date for helping deciding the time base
 	///                   of the session.
@@ -88,6 +102,15 @@ public class ActiveDaysPerWeekCounter {
 		self.lastResultMadeDate = nil
 	}
 
+
+	/// Commit a new access date, and return a result which indicates if you
+	/// should send an event.
+	///
+	/// - Parameter accessDate: a new date for accessing the counter.
+    /// - Returns: .active(days) if you should send an event for a
+    ///             specific day count, or .noEvent, if you need not
+    ///             do anything.
+	/// - Throws: ActiveDaysCounterError
 	public func commit(accessDate: Date) throws -> ActiveDaysCounterResult {
 		guard let beginDate = self.sessionBeginDate else {
 			throw ActiveDaysCounterError.sessionUnstarted
