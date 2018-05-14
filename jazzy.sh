@@ -1,0 +1,1 @@
+jazzy --podspec ActiveDays.podspec

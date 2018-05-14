@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ActiveDays  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="ActiveDays  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">ActiveDays Docs</a> (88% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">ActiveDays Reference</a>
+        <img id="carat" src="img/carat.png" />
+        ActiveDays  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ActiveDaysPerWeekCounter.html">ActiveDaysPerWeekCounter</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/ActiveDaysCounterError.html">ActiveDaysCounterError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ActiveDaysCounterResult.html">ActiveDaysCounterResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Date.html">Date</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='activedays' class='heading'>ActiveDays</h1>
+
+<p>Weizhong Yang (a.k.a zonble)</p>
+
+<p>ActiveDays is a Swift module, which turns how active a user is in a week into events which could be sent to Analytics platforms such as Firebase, Microsoft AppCenter and so on.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p>When we want to measure how our users are engaged with our app, we may want to know how many days are they using in a week - How many users use our app only for one day, or seven days a week?</p>
+
+<p>For example, if we want to know how many days does a user launch our app, we may create an instance of ActiveDaysPerWeekCounter, and start a session</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">activeDaysCounter</span> <span class="o">=</span> <span class="kt">ActiveDaysPerWeekCounter</span><span class="p">(</span><span class="nv">settingKey</span><span class="p">:</span> <span class="s">"app-launch"</span><span class="p">)</span>
+    <span class="n">activeDaysCounter</span><span class="o">.</span><span class="nf">startNewSessionIfNoExitingOne</span><span class="p">()</span>
+</code></pre>
+
+<p>Then, pass a date to the ActiveDaysPerWeekCounter instance, it will tell you if you should send an event or not.</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="k">try!</span> <span class="n">activeDaysCounter</span><span class="o">.</span><span class="nf">commit</span><span class="p">(</span><span class="nv">accessDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">())</span>
+    <span class="k">if</span> <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">active</span><span class="p">(</span><span class="n">days</span><span class="p">)</span> <span class="o">=</span> <span class="n">result</span> <span class="p">{</span>
+        <span class="c1">// Send active days to your analytics platform here.</span>
+    <span class="p">}</span>
+</code></pre>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>You can only install the extension with Swift Package Manager right now. Please add</p>
+<pre class="highlight swift"><code>    <span class="c1">// swift-tools-version:4.0</span>
+
+    <span class="kd">import</span> <span class="kt">PackageDescription</span>
+
+    <span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
+        <span class="nv">name</span><span class="p">:</span> <span class="s">"YourTargetName"</span><span class="p">,</span>
+        <span class="nv">products</span><span class="p">:</span> <span class="p">[</span>
+            <span class="o">.</span><span class="nf">executable</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"YourTargetName"</span><span class="p">,</span> <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span><span class="s">"YourTargetName"</span><span class="p">])</span>
+        <span class="p">],</span>
+        <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+            <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/zonble/ActiveDays"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMinor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">))</span>
+        <span class="p">],</span>
+        <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+            <span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"YourTargetName"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"ActiveDays"</span><span class="p">],</span> <span class="nv">path</span><span class="p">:</span> <span class="s">"./Path/To/Your/Sources"</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+</code></pre>
+
+<p>Enjoy!</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/zonble/ActiveDays" target="_blank" rel="external">zonble</a>. All rights reserved. (Last updated: 2018-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/zonble/KUBE/ActiveDays/Sources/ActiveDays/ActiveDays.swift",
+      "line": 33,
+      "symbol": "ActiveDaysCounterResult.noEvent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/zonble/KUBE/ActiveDays/Sources/ActiveDays/ActiveDays.swift",
+      "line": 34,
+      "symbol": "ActiveDaysCounterResult.active",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/zonble/KUBE/ActiveDays"
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ActiveDaysPerWeekCounter Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ActiveDaysPerWeekCounter" class="dashAnchor"></a>
+    <a title="ActiveDaysPerWeekCounter Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ActiveDays Docs</a> (88% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ActiveDays Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ActiveDaysPerWeekCounter Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ActiveDaysPerWeekCounter.html">ActiveDaysPerWeekCounter</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ActiveDaysCounterError.html">ActiveDaysCounterError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ActiveDaysCounterResult.html">ActiveDaysCounterResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ActiveDaysPerWeekCounter</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ActiveDaysPerWeekCounter</span></code></pre>
+
+                </div>
+              </div>
+            <p>ActiveDaysPerWeekCounter is a class that we made to answer a
+challenge: how do we know about how many days does a user uses our
+app per week?</p>
+
+<p>In KKBOX, we would like to find methods to measure how much does
+our app engadge with our users, and active days per week could be
+an indicator. However, it looks like most of the popular analytics
+platforms such as Firebase and so on do not provide such
+information.</p>
+
+<p>Thus, we would like to make active days as <q>events</q> on analytics
+platforms, for example, <q>active for one day</q>, <q>active for two
+days</q> could be events. ActiveDaysPerWeekCounter is a helper class
+to let us decide if we should send an event, and which event, to
+analytics platforms.</p>
+
+<p>After creating an instance of ActiveDaysPerWeekCounter, you should
+ask it to start a session. And then you can get a result when you
+commit a new access date to the counter.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10ActiveDays0aB14PerWeekCounterCACSS10settingKey_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(settingKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10ActiveDays0aB14PerWeekCounterCACSS10settingKey_tcfc">init(settingKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create an instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">settingKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>settingKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the key for helping storing data.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10ActiveDays0aB14PerWeekCounterC5resetyyF"></a>
+                    <a name="//apple_ref/swift/Method/reset()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10ActiveDays0aB14PerWeekCounterC5resetyyF">reset()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove all saved data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10ActiveDays0aB14PerWeekCounterC29startNewSessionIfNoExitingOneSbyF"></a>
+                    <a name="//apple_ref/swift/Method/startNewSessionIfNoExitingOne()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10ActiveDays0aB14PerWeekCounterC29startNewSessionIfNoExitingOneSbyF">startNewSessionIfNoExitingOne()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Start a new session, if there is no existing session. You need
+to start a session before commiting new access date to the
+counter.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startNewSessionIfNoExitingOne</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true if a new session is started, otherwise
+       the counter is using an existing session.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10ActiveDays0aB14PerWeekCounterC12startSessiony10Foundation4DateV4date_tF"></a>
+                    <a name="//apple_ref/swift/Method/startSession(date:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10ActiveDays0aB14PerWeekCounterC12startSessiony10Foundation4DateV4date_tF">startSession(date:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Start a new session by a given date, and the base of the
+session of be the start of the week where the given date is
+in.</p>
+
+<p>You need to start a session before commiting new access date
+to the counter. If there is an existing session, it will be
+replaced with the new one.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startSession</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>date</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the date for helping deciding the time base
+              of the session.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10ActiveDays0aB14PerWeekCounterC6commitAA0abE6ResultO10Foundation4DateV06accessI0_tKF"></a>
+                    <a name="//apple_ref/swift/Method/commit(accessDate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10ActiveDays0aB14PerWeekCounterC6commitAA0abE6ResultO10Foundation4DateV06accessI0_tKF">commit(accessDate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Commit a new access date, and return a result which indicates if you
+should send an event.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    ActiveDaysCounterError
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">commit</span><span class="p">(</span><span class="nv">accessDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Enums/ActiveDaysCounterResult.html">ActiveDaysCounterResult</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>accessDate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a new date for accessing the counter.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>.active(days) if you should send an event for a
+       specific day count, or .noEvent, if you need not
+       do anything.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/zonble/ActiveDays" target="_blank" rel="external">zonble</a>. All rights reserved. (Last updated: 2018-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
