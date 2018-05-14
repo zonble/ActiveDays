@@ -5,7 +5,7 @@ final class ActiveDaysTests: XCTestCase {
 	var counter: ActiveDaysPerWeekCounter!
 
 	override func setUp() {
-		self.counter = ActiveDaysPerWeekCounter(setingKey: "com.kkbox.activedays")
+		self.counter = ActiveDaysPerWeekCounter(settingKey: "com.kkbox.activedays")
 		self.counter.reset()
 	}
 

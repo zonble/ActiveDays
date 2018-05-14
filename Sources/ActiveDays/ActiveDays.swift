@@ -51,13 +51,13 @@ public enum ActiveDaysCounterResult {
 /// commit a new access date to the counter.
 
 public class ActiveDaysPerWeekCounter {
-	private var setingKey: String
+	private var settingKey: String
 
 	/// Create an instance.
 	///
-	/// - Parameter setingKey: the key for helping storing data.
-	public init(setingKey: String) {
-		self.setingKey = setingKey
+	/// - Parameter settingKey: the key for helping storing data.
+	public init(settingKey: String) {
+		self.settingKey = settingKey
 	}
 
 	/// Remove all saved data.
@@ -127,45 +127,45 @@ private extension ActiveDaysPerWeekCounter {
 
 	private var sessionBeginDate: Date? {
 		get {
-			return UserDefaults.standard.object(forKey: setingKey + "-sessionBegin") as? Date
+			return UserDefaults.standard.object(forKey: settingKey + "-sessionBegin") as? Date
 		}
 		set {
 			guard let newValue = newValue else {
-				UserDefaults.standard.removeObject(forKey: setingKey + "-sessionBegin")
+				UserDefaults.standard.removeObject(forKey: settingKey + "-sessionBegin")
 				return
 			}
-			UserDefaults.standard.set(newValue, forKey: setingKey + "-sessionBegin")
+			UserDefaults.standard.set(newValue, forKey: settingKey + "-sessionBegin")
 			UserDefaults.standard.synchronize()
 		}
 	}
 
 	private var lastResult: Int? {
 		get {
-			guard let int = UserDefaults.standard.object(forKey: setingKey + "-lastResult") as? Int else {
+			guard let int = UserDefaults.standard.object(forKey: settingKey + "-lastResult") as? Int else {
 				return nil
 			}
 			return int
 		}
 		set {
 			guard let newValue = newValue else {
-				UserDefaults.standard.removeObject(forKey: setingKey + "-lastResult")
+				UserDefaults.standard.removeObject(forKey: settingKey + "-lastResult")
 				return
 			}
-			UserDefaults.standard.set(newValue, forKey: setingKey + "-lastResult")
+			UserDefaults.standard.set(newValue, forKey: settingKey + "-lastResult")
 			UserDefaults.standard.synchronize()
 		}
 	}
 
 	private var lastResultMadeDate: Date? {
 		get {
-			return UserDefaults.standard.object(forKey: setingKey + "-lastDate") as? Date
+			return UserDefaults.standard.object(forKey: settingKey + "-lastDate") as? Date
 		}
 		set {
 			guard let newValue = newValue else {
-				UserDefaults.standard.removeObject(forKey: setingKey + "-lastDate")
+				UserDefaults.standard.removeObject(forKey: settingKey + "-lastDate")
 				return
 			}
-			UserDefaults.standard.set(newValue, forKey: setingKey + "-lastDate")
+			UserDefaults.standard.set(newValue, forKey: settingKey + "-lastDate")
 			UserDefaults.standard.synchronize()
 		}
 	}
